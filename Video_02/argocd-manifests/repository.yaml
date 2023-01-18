@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: argocd-demo
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: argocd-demo
+  url: https://github.com/The-Automation-Rules/argocd-demo.git
+  password: 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

@@ -270,7 +270,7 @@ The above command sets the Redis server within `default` namespace.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-helm install -f values-dev.yaml dandydev/redis-ha
+helm install -f values.yaml dandydev/redis-ha
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

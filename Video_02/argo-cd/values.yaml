@@ -72,7 +72,7 @@ global:
   podLabels: {}
 
   # -- Toggle and define pod-level security context.
-  # @default -- `{}` (See [values-dev.yaml])
+  # @default -- `{}` (See [values.yaml])
   securityContext: {}
   #  runAsUser: 999
   #  runAsGroup: 999
@@ -213,7 +213,7 @@ configs:
     policy.default: ''
 
     # -- File containing user-defined policies and role definitions.
-    # @default -- `''` (See [values-dev.yaml])
+    # @default -- `''` (See [values.yaml])
     policy.csv: ''
     # Policy rules are in the form:
     #  p, subject, resource, action, object, effect
@@ -232,7 +232,7 @@ configs:
     scopes: "[groups]"
 
   # -- Provide one or multiple [external cluster credentials]
-  # @default -- `[]` (See [values-dev.yaml])
+  # @default -- `[]` (See [values.yaml])
   ## Ref:
   ## - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters
   ## - https://argo-cd.readthedocs.io/en/stable/operator-manual/security/#external-cluster-credentials
@@ -261,7 +261,7 @@ configs:
   # -- GnuPG key ring annotations
   gpgKeysAnnotations: {}
   # -- [GnuPG](https://argo-cd.readthedocs.io/en/stable/user-guide/gpg-verification/) keys to add to the key ring
-  # @default -- `{}` (See [values-dev.yaml])
+  # @default -- `{}` (See [values.yaml])
   gpgKeys: {}
     # 4AEE18F83AFDEB23: |
     #     -----BEGIN PGP PUBLIC KEY BLOCK-----
@@ -287,7 +287,7 @@ configs:
   knownHosts:
     data:
       # -- Known Hosts
-      # @default -- See [values-dev.yaml]
+      # @default -- See [values.yaml]
       ssh_known_hosts: |
         bitbucket.org ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAubiN81eDcafrgMeLzaFPsw2kNvEcqTKl/VqLat/MaB33pZy0y3rJZtnqwR2qOOvbwKZYKiEO1O6VqNEBxKvJJelCq0dTXWT5pbO2gDXC6h6QDXCaHo6pOHGPUy+YBaGQRGuSusMEASYiWunYN0vCAI8QaXnWMXNMdFP3jHAJH0eDsoiGnLPBlBp4TNm6rYI74nMzgz3B9IikW4WVK+dc8KZJZWYjAuORU3jc1c/NPskD2ASinf8v3xnfXeukU0sJ5N6m5E8VLjObPEO+mN2t/FZTMZLiFqPWc/ALSqnMnnhwrNi2rbfg/rd/IpL8Le3pSBne8+seeFVBoGqzHM9yXw==
         github.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=
@@ -301,7 +301,7 @@ configs:
   # -- TLS certificate configmap annotations
   tlsCertsAnnotations: {}
   # -- TLS certificate
-  # @default -- See [values-dev.yaml]
+  # @default -- See [values.yaml]
   tlsCerts:
     {}
     # data:
@@ -436,7 +436,7 @@ configs:
 
   # -- Define custom [CSS styles] for your argo instance.
   # This setting will automatically mount the provided CSS and reference it in the argo configuration.
-  # @default -- `""` (See [values-dev.yaml])
+  # @default -- `""` (See [values.yaml])
   ## Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/custom-styles/
   styles: ""
   # styles: |
@@ -544,7 +544,7 @@ controller:
   env: []
 
   # -- envFrom to pass to application controller
-  # @default -- `[]` (See [values-dev.yaml])
+  # @default -- `[]` (See [values.yaml])
   envFrom: []
   # - configMapRef:
   #     name: config-map-name
@@ -840,7 +840,7 @@ dex:
   env: []
 
   # -- envFrom to pass to the Dex server
-  # @default -- `[]` (See [values-dev.yaml])
+  # @default -- `[]` (See [values.yaml])
   envFrom: []
   # - configMapRef:
   #     name: config-map-name
@@ -1019,7 +1019,7 @@ redis:
   env: []
 
   # -- envFrom to pass to the Redis server
-  # @default -- `[]` (See [values-dev.yaml])
+  # @default -- `[]` (See [values.yaml])
   envFrom: []
   # - configMapRef:
   #     name: config-map-name
@@ -1186,7 +1186,7 @@ redis-ha:
     # -- Redis convention for naming the cluster group: must match `^[\\w-\\.]+$` and can be templated
     masterGroupName: argocd
     # -- Any valid redis config options in this section will be applied to each server (see `redis-ha` chart)
-    # @default -- See [values-dev.yaml]
+    # @default -- See [values.yaml]
     config:
       # -- Will save the DB if both the given number of seconds and the given number of write operations against the DB occurred. `""`  is disabled
       # @default -- `'""'`
@@ -1306,7 +1306,7 @@ server:
   env: []
 
   # -- envFrom to pass to Argo CD server
-  # @default -- `[]` (See [values-dev.yaml])
+  # @default -- `[]` (See [values.yaml])
   envFrom: []
   # - configMapRef:
   #     name: config-map-name
@@ -1827,7 +1827,7 @@ repoServer:
   env: []
 
   # -- envFrom to pass to repo server
-  # @default -- `[]` (See [values-dev.yaml])
+  # @default -- `[]` (See [values.yaml])
   envFrom: []
   # - configMapRef:
   #     name: config-map-name
@@ -2217,7 +2217,7 @@ applicationSet:
     #   value: "value"
 
   # -- envFrom to pass to the controller
-  # @default -- `[]` (See [values-dev.yaml])
+  # @default -- `[]` (See [values.yaml])
   extraEnvFrom: []
     # - configMapRef:
     #     name: config-map-name
@@ -2361,7 +2361,7 @@ notifications:
   extraEnv: []
 
   # -- envFrom to pass to the controller
-  # @default -- `[]` (See [values-dev.yaml])
+  # @default -- `[]` (See [values.yaml])
   extraEnvFrom: []
     # - configMapRef:
     #     name: config-map-name
@@ -2409,7 +2409,7 @@ notifications:
       tlsConfig: {}
 
   # -- Configures notification services such as slack, email or custom webhook
-  # @default -- See [values-dev.yaml]
+  # @default -- See [values.yaml]
   ## For more information: https://argocd-notifications.readthedocs.io/en/stable/services/overview/
   notifiers: {}
     # service.slack: |

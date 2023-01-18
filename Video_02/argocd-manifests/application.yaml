@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-demo
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    name: argocd-demo
+spec:
+  project: argocd-demo
+
+  source:
+    repoURL: https://github.com/The-Automation-Rules/argocd-demo.git
+    targetRevision: main
+    path: official/examples/helm-guestbook
+    helm:
+      valueFiles:
+        - values-test.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd-demo
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - Validate=false
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
+
+  ignoreDifferences:
+    - group: "*"
+      kind: "*"
