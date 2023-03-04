@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-demo-arm
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: nginx-demo-arm
+  template:
+    metadata:
+      labels:
+        app: nginx-demo-arm
+    spec:
+      containers:
+        - image: ghcr.io/theautomationrules/nginx-demo-arm
+          name: nginx-demo-arm
+          ports:
+            - containerPort: 80

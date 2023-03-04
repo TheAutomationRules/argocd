@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-demo-arm
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: ghcr.io/theautomationrules/nginx-demo-arm:~0.1
+    argocd-image-updater.argoproj.io/git-branch: main
+
+spec:
+  project: argocd-demo
+  source:
+    repoURL: https://github.com/TheAutomationRules/argocd.git
+    targetRevision: HEAD
+    path: Video_03/nginx-demo/arm/kustomize/overlays/testing
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd-demo
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+      allowEmpty: true
