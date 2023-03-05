@@ -97,7 +97,7 @@ kubectl port-forward service/nginx-demo-arm -n argocd-demo 8082:80
 
 Instalamos ArgoCD
 ````
-make install
+make start
 ````
 Instalamos ArgoCD Image Updater
 ````
