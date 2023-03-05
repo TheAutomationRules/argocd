@@ -7,6 +7,18 @@ kubernetes desde ArgoCD con ArgoCD Image Updater.
 
 0:00 Inicio
 
+0:13 Intro
+
+0:24 Explicación
+
+3:14 DEMO
+
+18:43 Conclusión
+
+20:00 Despedida
+
+20:10 Outro
+
 
 GitHub:
 https://github.com/TheAutomationRules/argocd/blob/main/Video_03/README.md
