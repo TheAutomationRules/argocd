@@ -1,2 +1,15 @@
-service:
-  type: LoadBalancer
+apiVersion: v1
+kind: Service
+metadata:
+  name: guestbook-test1-pro-helm-guestbook
+spec:
+  selector:
+    app: helm-guestbook
+    release: guestbook-test1-pro
+  type: NodePort
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      nodePort: 30003
+      protocol: TCP
