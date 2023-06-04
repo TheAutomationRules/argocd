@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: appset2
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: ApplicationSet Project 2
+
+  sourceRepos:
+    - '*'
+
+  destinations:
+    - namespace: '*'
+      server: https://kubernetes.default.svc
+      name: in-cluster
+
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'

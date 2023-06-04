@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: stack
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - app: consul
+            version: 1.1.1
+            env: dev
+          - app: prometheus
+            version: 22.6.1
+            env: test
+  template:
+    metadata:
+      name: 'stack-{{app}}-{{env}}'
+      namespace: argocd
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      project: appset2
+      source:
+        repoURL: https://github.com/TheAutomationRules/helm.git
+        targetRevision: HEAD
+        path: charts/{{app}}/{{version}}
+        helm:
+          valueFiles:
+            - values-{{env}}.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: stack-{{env}}

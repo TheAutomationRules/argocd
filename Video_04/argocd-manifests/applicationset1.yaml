@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: guestbook
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - env: dev
+            test: test1
+          - env: test
+            test: test1
+          - env: pro
+            test: test1
+  template:
+    metadata:
+      name: 'guestbook-{{test}}-{{env}}'
+      namespace: argocd
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      project: appset1
+      source:
+        repoURL: https://github.com/TheAutomationRules/argocd.git
+        targetRevision: HEAD
+        path: official/examples/helm-guestbook
+        helm:
+          valueFiles:
+            - values-{{env}}.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: guestbook-{{env}}
