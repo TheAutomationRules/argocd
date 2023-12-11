@@ -29,7 +29,7 @@ projects:
 # ------------------------------------------------------------------------------
 applications:
 # ------------------------------------------------------------------------------
-  - name: nginx-ingress
+  - name: nginx
     namespace: argocd
     additionalLabels: { }
     additionalAnnotations:
@@ -38,11 +38,11 @@ applications:
       - resources-finalizer.argocd.argoproj.io
     project: third
     source:
-      chart: nginx-ingress
-      repoURL: https://helm.nginx.com/stable
-      targetRevision: 1.0.2
+      chart: nginx
+      repoURL: https://charts.bitnami.com/bitnami
+      targetRevision: 15.4.4
       helm:
-        releaseName: nginx-ingress
+        releaseName: nginx
     destination:
       server: https://kubernetes.default.svc
       namespace: third
