@@ -29,7 +29,7 @@ projects:
 # ------------------------------------------------------------------------------
 applications:
 # ------------------------------------------------------------------------------
-  - name: sealed-secrets
+  - name: prometheus
     namespace: argocd
     additionalLabels: { }
     additionalAnnotations:
@@ -38,11 +38,11 @@ applications:
       - resources-finalizer.argocd.argoproj.io
     project: third
     source:
-      chart: sealed-secrets
-      repoURL: https://bitnami-labs.github.io/sealed-secrets
-      targetRevision: 1.16.1
+      chart: prometheus
+      repoURL: https://prometheus-community.github.io/helm-charts
+      targetRevision: 25.8.1
       helm:
-        releaseName: sealed-secrets
+        releaseName: prometheus
     destination:
       server: https://kubernetes.default.svc
       namespace: third
