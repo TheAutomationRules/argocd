@@ -29,7 +29,7 @@ projects:
 # ------------------------------------------------------------------------------
 applications:
 # ------------------------------------------------------------------------------
-  - name: prometheus
+  - name: nginx-ingress
     namespace: argocd
     additionalLabels: { }
     additionalAnnotations:
@@ -38,11 +38,11 @@ applications:
       - resources-finalizer.argocd.argoproj.io
     project: third
     source:
-      chart: prometheus
-      repoURL: https://prometheus-community.github.io/helm-charts
-      targetRevision: 25.8.1
+      chart: nginx-ingress
+      repoURL: https://helm.nginx.com/stable
+      targetRevision: 1.0.2
       helm:
-        releaseName: prometheus
+        releaseName: nginx-ingress
     destination:
       server: https://kubernetes.default.svc
       namespace: third
