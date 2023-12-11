@@ -53,7 +53,7 @@ applications:
       - name: url
         value: https://github.com/TheAutomationRules/argocd.git
 
-  - name: velero
+  - name: redis
     namespace: argocd
     additionalLabels: { }
     additionalAnnotations:
@@ -62,11 +62,11 @@ applications:
       - resources-finalizer.argocd.argoproj.io
     project: third
     source:
-      chart: velero
-      repoURL: https://vmware-tanzu.github.io/helm-charts/
-      targetRevision: 5.1.6
+      chart: redis
+      repoURL: https://charts.bitnami.com/bitnami
+      targetRevision: 18.5.0
       helm:
-        releaseName: velero
+        releaseName: redis
     destination:
       server: https://kubernetes.default.svc
       namespace: third
