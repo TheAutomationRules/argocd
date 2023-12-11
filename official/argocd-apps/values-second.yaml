@@ -3,6 +3,10 @@
 # ------------------------------------------------------------------------------
 configs:
 
+  # NAMESPACES to be used
+  namespaces:
+    - second
+
 projects:
   - name: third
     namespace: argocd
