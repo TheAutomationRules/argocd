@@ -47,10 +47,30 @@ applications:
       server: https://kubernetes.default.svc
       namespace: third
     syncPolicy:
-      #automated:
-        #selfHeal: true
-        #prune: true
-        #allowEmpty: true
+      syncOptions:
+        - CreateNamespace=true
+    info:
+      - name: url
+        value: https://github.com/TheAutomationRules/argocd.git
+
+  - name: velero
+    namespace: argocd
+    additionalLabels: { }
+    additionalAnnotations:
+
+    finalizers:
+      - resources-finalizer.argocd.argoproj.io
+    project: third
+    source:
+      chart: velero
+      repoURL: https://vmware-tanzu.github.io/helm-charts/
+      targetRevision: 5.1.6
+      helm:
+        releaseName: velero
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: third
+    syncPolicy:
       syncOptions:
         - CreateNamespace=true
     info:
