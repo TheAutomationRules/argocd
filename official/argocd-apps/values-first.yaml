@@ -1,0 +1,59 @@
+# ------------------------------------------------------------------------------
+# ARGOCD PROJECT CONFIGS
+# ------------------------------------------------------------------------------
+configs:
+
+  # NAMESPACES to be used
+  namespaces:
+    - testing
+
+projects:
+  - name: second
+    namespace: argocd
+    additionalLabels: {}
+    additionalAnnotations: {}
+    finalizers:
+    - resources-finalizer.argocd.argoproj.io
+    description: Second Project
+    sourceRepos:
+      - '*'
+    destinations:
+      - namespace: 'second'
+        server: https://kubernetes.default.svc
+    clusterResourceWhitelist:
+      - group: '*'
+        kind: '*'
+
+# ------------------------------------------------------------------------------
+# APPLICATIONS
+# ------------------------------------------------------------------------------
+applications:
+# ------------------------------------------------------------------------------
+  - name: second
+    namespace: argocd
+    additionalLabels: { }
+    additionalAnnotations:
+
+    finalizers:
+      - resources-finalizer.argocd.argoproj.io
+    project: argocd-demo
+    source:
+      repoURL: https://github.com/TheAutomationRules/argocd.git
+      targetRevision: main
+      path: official/argocd-apps
+      helm:
+        valueFiles:
+          - values-second.yaml
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: second
+    syncPolicy:
+      #automated:
+        #selfHeal: true
+        #prune: true
+        #allowEmpty: true
+      syncOptions:
+        - CreateNamespace=true
+    info:
+      - name: url
+        value: https://github.com/TheAutomationRules/argocd.git

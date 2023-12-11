@@ -1,0 +1,15 @@
+annotations:
+  artifacthub.io/changes: |
+    - "[Added]: Add Extensions"
+apiVersion: v2
+description: A Helm chart for managing additional Argo CD Applications Projects Applicationsets Extensions and Repos
+keywords:
+- argoproj
+- argocd
+- gitops
+maintainers:
+- name: rockemsockem
+  url: https://www.theautomationrules.com
+name: argocd-projects
+type: application
+version: 0.0.1

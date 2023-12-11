@@ -1,0 +1,54 @@
+# ------------------------------------------------------------------------------
+# ARGOCD PROJECT CONFIGS
+# ------------------------------------------------------------------------------
+configs:
+
+projects:
+  - name: third
+    namespace: argocd
+    additionalLabels: {}
+    additionalAnnotations: {}
+    finalizers:
+    - resources-finalizer.argocd.argoproj.io
+    description: Third Project
+    sourceRepos:
+      - '*'
+    destinations:
+      - namespace: 'third'
+        server: https://kubernetes.default.svc
+    clusterResourceWhitelist:
+      - group: '*'
+        kind: '*'
+
+# ------------------------------------------------------------------------------
+# APPLICATIONS
+# ------------------------------------------------------------------------------
+applications:
+# ------------------------------------------------------------------------------
+  - name: sealed-secrets
+    namespace: argocd
+    additionalLabels: { }
+    additionalAnnotations:
+
+    finalizers:
+      - resources-finalizer.argocd.argoproj.io
+    project: third
+    source:
+      chart: sealed-secrets
+      repoURL: https://bitnami-labs.github.io/sealed-secrets
+      targetRevision: 1.16.1
+      helm:
+        releaseName: sealed-secrets
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: third
+    syncPolicy:
+      #automated:
+        #selfHeal: true
+        #prune: true
+        #allowEmpty: true
+      syncOptions:
+        - CreateNamespace=true
+    info:
+      - name: url
+        value: https://github.com/TheAutomationRules/argocd.git
