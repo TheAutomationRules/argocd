@@ -33,7 +33,6 @@ applications:
     namespace: argocd
     additionalLabels: { }
     additionalAnnotations:
-
     finalizers:
       - resources-finalizer.argocd.argoproj.io
     project: third
@@ -57,7 +56,6 @@ applications:
     namespace: argocd
     additionalLabels: { }
     additionalAnnotations:
-
     finalizers:
       - resources-finalizer.argocd.argoproj.io
     project: third
