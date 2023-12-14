@@ -36,7 +36,7 @@ applications:
 
     finalizers:
       - resources-finalizer.argocd.argoproj.io
-    project: argocd-demo
+    project: second
     source:
       repoURL: https://github.com/TheAutomationRules/argocd.git
       targetRevision: main
