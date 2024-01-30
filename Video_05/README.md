@@ -5,14 +5,23 @@ Hoy vamos a ver como anidar aplicaciones en ArgoCD para organizar el despliegue 
 **Video:** https://youtu.be/EQz7pB7I4bQ
 
 0:00 Inicio
+
 0:05 INTRO
+
 0:17 Descripción
+
 0:35 Instalación de ArgoCD
+
 3:45 Project argocd-demo
+
 4:31 Application argocd-demo
+
 5:33 Demo Helm Chart Apps
+
 13:23 Conclusión
+
 14:44 Despedida
+
 14:53 OUTRO
 
 GitHub:
@@ -45,5 +54,4 @@ make application
 ````
 Sincronizamos por fases los elementos de la aplicacion base desde ArgoCD, continuamos con el contenido del video.
 
-- **The Automation Rules** 🤖👍
-````
+**The Automation Rules** 🤖👍
