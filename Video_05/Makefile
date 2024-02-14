@@ -1,3 +1,5 @@
+argoenv: project application
+
 installargo:
 	@echo "| > INSTALACION DE ARGOCD"
 	helm install argo-cd argo/argo-cd --version 5.51.6 \
