@@ -1,4 +1,4 @@
-argoenv: project application
+argoenv: installargo project application
 
 installargo:
 	@echo "| > INSTALACION DE ARGOCD"
